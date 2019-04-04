@@ -60,19 +60,33 @@
 						<a href="index.html"><i class="halflings-icon home"></i></a>
 						<a href="#"><i class="halflings-icon cog"></i></a>
 					</div>
-					<h2>Login to your account</h2>
-					<form class="form-horizontal" action="" method="post">
+						<?php 
+							$message = Session::get('message');
+							if ($message) {
+								echo '<div class="box-content">
+										<div class="alert alert-error">
+											<button type="button" class="close" data-dismiss="alert">×</button><strong>'.$message.'</strong>
+										</div>
+									</div>';
+							}
+							Session::put('message', null);
+						?>
+
+					<h2>Login to your account</h2>					
+
+					<form class="form-horizontal" action="{{ route('admin_dashboard') }}" method="post">
+						@csrf
 						<fieldset>
 							
 							<div class="input-prepend" title="Username">
 								<span class="add-on"><i class="halflings-icon envelope"></i></span>
-								<input class="input-large span10" name="email" id="username" type="email" placeholder="type email"/>
+								<input class="input-large span10" name="admin_email" id="username" type="email" placeholder="type email"/>
 							</div>
 							<div class="clearfix"></div>
 
 							<div class="input-prepend" title="Password">
 								<span class="add-on"><i class="halflings-icon lock"></i></span>
-								<input class="input-large span10" name="password" id="password" type="password" placeholder="type password"/>
+								<input class="input-large span10" name="admin_password" id="password" type="password" placeholder="type password"/>
 							</div>
 							<div class="clearfix"></div>
 							

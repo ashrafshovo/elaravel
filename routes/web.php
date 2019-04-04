@@ -34,7 +34,15 @@ Route::get('/', 'HomeController@index')->name('index');
 
 
 
+
 // Back End Site ------------------------
 
+Route::get('/logout', 'SuperAdminController@logout')->name('logout');
 Route::get('/admin', 'AdminController@index')->name('login');
-Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
+Route::get('/dashboard', 'AdminController@show_dashboard')->name('dashboard');
+Route::post('/admin-dashboard', 'AdminController@dashboard')->name('admin_dashboard');
+
+// Category route
+Route::resource('category', 'CategoryController');
+Route::get('category/publish/{id}', 'CategoryController@publish')->name('publish');
+Route::get('category/unpublish/{id}', 'CategoryController@unpublish')->name('unpublish');
