@@ -549,7 +549,8 @@
 				<i class="fa fa-angle-right"></i>
 			</a>			
 		</div>
-	</div><!--/recommended_items-->
+	</div>
+</div><!--/recommended_items-->
 
 
 @endsection
