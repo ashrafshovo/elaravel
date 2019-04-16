@@ -57,8 +57,8 @@
 			<div class="row-fluid">
 				<div class="login-box">
 					<div class="icons">
-						<a href="index.html"><i class="halflings-icon home"></i></a>
-						<a href="#"><i class="halflings-icon cog"></i></a>
+						<a href="{{ route('index') }}"><i class="halflings-icon home"></i></a>
+						{{-- <a href="#"><i class="halflings-icon cog"></i></a> --}}
 					</div>
 						<?php 
 							$message = Session::get('message');
