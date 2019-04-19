@@ -119,7 +119,7 @@
 	        	</button>
 	        	<h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
 	        </div>
-	      	<form action="{{ route('category.destroy', $category->category_id) }}" method="post">
+	      	<form action="{{ route('category.destroy', $category->category_id) }}" method="post" style="margin-bottom: 0px;" >
 	      		@csrf
 	      		@method('delete')
 		    	<div class="modal-body">
