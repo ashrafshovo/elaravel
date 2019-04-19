@@ -44,7 +44,7 @@
 
 						<div class="form-actions">
 							<button type="submit" class="btn btn-primary">Update Category</button>
-							<button type="reset" class="btn">Cancel</button>
+							<a href="{{ URL::previous() }}" class="btn">Cancel</a>
 						</div>
 					</fieldset>
 				</form>

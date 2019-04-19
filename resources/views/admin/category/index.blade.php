@@ -16,8 +16,17 @@
 
 <style>
 	.mar {
-		margin: 15px 30px;
+		margin: 15px 0px;
 	}
+
+	.table th {
+		text-align: center;
+	}
+
+	.table td {
+		text-align: center;
+	}
+
 </style>
 
 <div class="row-fluid sortable">
@@ -29,7 +38,7 @@
 		<a href="{{ route('category.create') }}" class="btn btn-primary">Add Category</a>
 	</div>
 
-	<div class="box span12">
+	<div class="box span12" style="margin-left: 0px;">
 		<div class="box-header">
 			<h2><i class="halflings-icon user"></i><span class="break"></span>Categories</h2>
 		</div>
@@ -71,7 +80,7 @@
 								<i class="halflings-icon white edit"></i>  
 							</a>
 
-							<form id="delete-from-{{ $category->category_id }}" action="{{ route('category.destroy', $category->category_id) }}" style="display:none;" method="post">
+							{{-- <form id="delete-from-{{ $category->category_id }}" action="{{ route('category.destroy', $category->category_id) }}" style="display:none;" method="post">
 								@csrf
 								@method('delete')
 							</form>
@@ -82,20 +91,14 @@
 							} else {
 								event.preventDefault();
 							}">
-								<i class="halflings-icon white trash"></i> 
+								<i class="halflings-icon white trash"></i>
+							</button> --}}
+
+							
+ 							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
+  								<i class="halflings-icon white trash"></i>
 							</button>
-
-							{{-- 
-								<form id="delete" action="{{ route('category.destroy', $category->category_id) }}" style="display:none;" method="post">
-									@csrf
-									@method('delete')
-								</form>
-
-								<button class="btn btn-danger" type="button" id="delete">
-									<i class="halflings-icon white trash"></i> 
-								</button>
- 							--}}
-
 						</td>
 					</tr>
 					@endforeach
@@ -104,5 +107,31 @@
 		</div>
 	</div><!--/span-->
 </div><!--/row-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+	     	<div class="modal-header">
+	      		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          		<span aria-hidden="true">&times;</span>
+	        	</button>
+	        	<h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+	        </div>
+	      	<form action="{{ route('category.destroy', $category->category_id) }}" method="post">
+	      		@csrf
+	      		@method('delete')
+		    	<div class="modal-body">
+		        	Are You Want to delete this?
+		      	</div>
+		      	<div class="modal-footer">
+		        	<button type="submit" class="btn btn-primary">Delete</button>
+		        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      	</div>
+	 		</form>
+    	</div>
+  	</div>
+</div>
 
 @endsection

@@ -422,6 +422,8 @@
 		</p>
 
 	</footer>
+
+{{-- 	@include('modal') --}}
 	
 	<!-- start: JavaScript-->
 
@@ -485,17 +487,6 @@
 
 	<script src="{{ asset('back/js/custom.js') }}"></script>
 
-	<script type="text/javascript">
-		$(document).on("click", "#delete", function(event){
-			event.preventDefault();
-			var link = $(this).attr("method");
-			bootbox.confirm("Are you want to delete this?", function(button){
-				if (confirm) {
-					window.location.href = link;
-				};
-			});
-		});
-	</script>
 	
 	<!-- end: JavaScript-->
 	
