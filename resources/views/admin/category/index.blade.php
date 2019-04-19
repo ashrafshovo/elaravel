@@ -123,7 +123,7 @@
 	      		@csrf
 	      		@method('delete')
 		    	<div class="modal-body">
-		        	Are You Want to delete this?
+		        	Are you want to delete this?
 		      	</div>
 		      	<div class="modal-footer">
 		        	<button type="submit" class="btn btn-primary">Delete</button>
