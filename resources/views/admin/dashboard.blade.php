@@ -41,9 +41,10 @@
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="{{ asset('back/img/favicon.ico') }}">
 	<!-- end: Favicon -->
-	
 
-
+	<!-- start: bootbox.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.js"></script>
+	<!-- end: bootbox.js -->
 
 </head>
 
@@ -483,6 +484,18 @@
 	<script src="{{ asset('back/js/retina.js') }}"></script>
 
 	<script src="{{ asset('back/js/custom.js') }}"></script>
+
+	<script type="text/javascript">
+		$(document).on("click", "#delete", function(event){
+			event.preventDefault();
+			var link = $(this).attr("method");
+			bootbox.confirm("Are you want to delete this?", function(button){
+				if (confirm) {
+					window.location.href = link;
+				};
+			});
+		});
+	</script>
 	
 	<!-- end: JavaScript-->
 	

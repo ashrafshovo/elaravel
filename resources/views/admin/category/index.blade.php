@@ -49,7 +49,7 @@
 					<tr>
 						<td>{{ $key+1 }}</td>
 						<td>{{ $category->category_name }}</td>
-						<td>{{ $category->category_description }}</td>
+						<td>{!! $category->category_description !!}</td>
 						<td class="center">
 							@if($category->publication_status == true)
 								<span class="label label-success">Published</span>
@@ -59,7 +59,7 @@
 						</td>
 						<td class="center">
 							@if($category->publication_status == 1)
-								<a class="btn btn-success" href="{{ route('unpublish', $category->category_id) }}">
+								<a class="btn btn-default" href="{{ route('unpublish', $category->category_id) }}">
 									<i class="halflings-icon white thumbs-down"></i>  
 								</a>
 							@else
@@ -70,9 +70,32 @@
 							<a class="btn btn-info" href="{{ route('category.edit', $category->category_id) }}">
 								<i class="halflings-icon white edit"></i>  
 							</a>
-							<a class="btn btn-danger" href="#">
+
+							<form id="delete-from-{{ $category->category_id }}" action="{{ route('category.destroy', $category->category_id) }}" style="display:none;" method="post">
+								@csrf
+								@method('delete')
+							</form>
+
+							<button class="btn btn-danger" type="button" onclick="if(confirm('Are you sure? You want to delete this.')){
+								event.preventDefault();
+								document.getElementById('delete-from-{{ $category->category_id }}').submit();
+							} else {
+								event.preventDefault();
+							}">
 								<i class="halflings-icon white trash"></i> 
-							</a>
+							</button>
+
+							{{-- 
+								<form id="delete" action="{{ route('category.destroy', $category->category_id) }}" style="display:none;" method="post">
+									@csrf
+									@method('delete')
+								</form>
+
+								<button class="btn btn-danger" type="button" id="delete">
+									<i class="halflings-icon white trash"></i> 
+								</button>
+ 							--}}
+
 						</td>
 					</tr>
 					@endforeach

@@ -95,7 +95,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //echo $id;
+
+        $this->validate( $request, [
+            'category_name' => 'required|string',
+            'category_description' => 'required'
+        ]);
+
+        $data = array();
+        $data['category_name'] = $request->category_name;
+        $data['category_description'] = $request->category_description;
+        
+        //print_r($data);
+        DB::table('tbl_categories')
+                ->where('category_id', $id)
+                ->update($data);
+        return redirect(route('category.index'))->with('successMsg', 'Category updated successfully.');
     }
 
     /**
@@ -107,6 +122,10 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+        DB::table('tbl_categories')
+                ->where('category_id', $id)
+                ->delete();
+        return redirect(route('category.index'))->with('successMsg', 'Category deleted successfully.');
     }
 
     /**
@@ -117,7 +136,7 @@ class CategoryController extends Controller
     */
     public function publish($id)
     {
-    	$category = DB::table('tbl_categories')
+    	DB::table('tbl_categories')
     			->where('category_id', $id)
     			->update(['publication_status' => 1]);
     	return redirect()->back()->with('successMsg', 'Category successfully published.');;
@@ -132,7 +151,7 @@ class CategoryController extends Controller
 
     public function unpublish($id)
     {
-    	$category = DB::table('tbl_categories')
+    	DB::table('tbl_categories')
     			->where('category_id', $id)
     			->update(['publication_status' => 0]);
     	return redirect()->back()->with('successMsg', 'Category successfully unpublished.');;
