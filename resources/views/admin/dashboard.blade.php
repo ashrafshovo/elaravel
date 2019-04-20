@@ -348,7 +348,7 @@
 
 						<li class="{{ Request::is('/category*')? 'active': '' }}"><a href="{{ route('category.index') }}"><i class="icon-envelope"></i><span class="hidden-tablet"> Categories</span></a></li>
 
-						<li><a href="tasks.html"><i class="icon-tasks"></i><span class="hidden-tablet"> Brands</span></a></li>
+						<li class="{{ Request::is('/manufacture*')? 'active': '' }}"><a href="{{ route('manufacture.index') }}"><i class="icon-tasks"></i><span class="hidden-tablet"> Manufactures</span></a></li>
 
 						<li><a href="ui.html"><i class="icon-picture"></i><span class="hidden-tablet"> Sliders</span></a></li>
 

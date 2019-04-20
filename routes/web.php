@@ -44,5 +44,10 @@ Route::post('/admin-dashboard', 'AdminController@dashboard')->name('admin_dashbo
 
 // Category route
 Route::resource('category', 'CategoryController');
-Route::get('category/publish/{id}', 'CategoryController@publish')->name('publish');
-Route::get('category/unpublish/{id}', 'CategoryController@unpublish')->name('unpublish');
+Route::get('category/publish/{id}', 'CategoryController@publish')->name('category.publish');
+Route::get('category/unpublish/{id}', 'CategoryController@unpublish')->name('category.unpublish');
+
+// Manufacture route
+Route::resource('manufacture', 'ManufactureController');
+Route::get('manufacture/publish/{id}', 'ManufactureController@publish')->name('manufacture.publish');
+Route::get('manufacture/unpublish/{id}', 'ManufactureController@unpublish')->name('manufacture.unpublish');
