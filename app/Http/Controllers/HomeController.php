@@ -14,7 +14,10 @@ class HomeController extends Controller
     	$categories = DB::table('tbl_categories')
     				->where('publication_status', 1)
     				->get();
-    	return view('pages.front.home', compact('categories'));
+    	$manufactures = DB::table('tbl_manufacture')
+    				->where('publication_status', 1)
+    				->get();
+    	return view('pages.front.home', compact('categories', 'manufactures'));
     }
     
 }
