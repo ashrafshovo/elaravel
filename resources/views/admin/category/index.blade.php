@@ -68,11 +68,11 @@
 						</td>
 						<td class="center">
 							@if($category->publication_status == 1)
-								<a class="btn btn-default" href="{{ route('unpublish', $category->category_id) }}">
+								<a class="btn btn-default" href="{{ route('category.unpublish', $category->category_id) }}">
 									<i class="halflings-icon white thumbs-down"></i>  
 								</a>
 							@else
-								<a class="btn btn-success" href="{{ route('publish', $category->category_id) }}">
+								<a class="btn btn-success" href="{{ route('category.publish', $category->category_id) }}">
 									<i class="halflings-icon white thumbs-up"></i>  
 								</a>
 							@endif
@@ -109,29 +109,30 @@
 </div><!--/row-->
 
 
-<!-- Modal -->
-<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-    	<div class="modal-content">
-	     	<div class="modal-header">
-	      		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          		<span aria-hidden="true">&times;</span>
-	        	</button>
-	        	<h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
-	        </div>
-	      	<form action="{{ route('category.destroy', $category->category_id) }}" method="post" style="margin-bottom: 0px;" >
-	      		@csrf
-	      		@method('delete')
-		    	<div class="modal-body">
-		        	Are you want to delete this?
-		      	</div>
-		      	<div class="modal-footer">
-		        	<button type="submit" class="btn btn-primary">Delete</button>
-		        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-		      	</div>
-	 		</form>
-    	</div>
-  	</div>
-</div>
-
+@if($categories->count()>0)
+	<!-- Modal -->
+	<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+		     	<div class="modal-header">
+		      		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          		<span aria-hidden="true">&times;</span>
+		        	</button>
+		        	<h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+		        </div>
+		      	<form action="{{ route('category.destroy', $category->category_id) }}" method="post" style="margin-bottom: 0px;" >
+		      		@csrf
+		      		@method('delete')
+			    	<div class="modal-body">
+			        	Are you want to delete this?
+			      	</div>
+			      	<div class="modal-footer">
+			        	<button type="submit" class="btn btn-primary">Delete</button>
+			        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			      	</div>
+		 		</form>
+	    	</div>
+	  	</div>
+	</div>
+@endif
 @endsection
