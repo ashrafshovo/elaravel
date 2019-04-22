@@ -17,7 +17,7 @@ class CreateManufactureTable extends Migration
             $table->increments('manufacture_id');
             $table->string('manufacture_name');
             $table->text('manufacture_description');
-            $table->tinyInteger('publication_status')->nullable();
+            $table->tinyInteger('publication_status')->default(0)->nullable();
             $table->timestamps();
         });
     }
