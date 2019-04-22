@@ -51,3 +51,8 @@ Route::get('category/unpublish/{id}', 'CategoryController@unpublish')->name('cat
 Route::resource('manufacture', 'ManufactureController');
 Route::get('manufacture/publish/{id}', 'ManufactureController@publish')->name('manufacture.publish');
 Route::get('manufacture/unpublish/{id}', 'ManufactureController@unpublish')->name('manufacture.unpublish');
+
+// Product route
+Route::resource('product', 'ProductController');
+Route::get('product/publish/{id}', 'ProductController@publish')->name('product.publish');
+Route::get('product/unpublish/{id}', 'ProductController@unpublish')->name('product.unpublish');
