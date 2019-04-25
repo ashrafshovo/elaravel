@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 
-@section('title', 'Add ProductCategory || E-Shopper')
+@section('title', 'Add Product || E-Shopper')
 
 @section('content')
 
@@ -25,7 +25,7 @@
 				<h2><i class="halflings-icon edit"></i><span class="break"></span>Add Product</h2>
 			</div>
 			<div class="box-content">
-				<form class="form-horizontal" action="{{ route('product.store') }}" method="post">
+				<form class="form-horizontal" action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
 					@csrf
 					<fieldset>
 						<div class="control-group">
@@ -38,8 +38,8 @@
 						<div class="control-group">
 							<label class="control-label" for="selectError">Product Category</label>
 							<div class="controls">
-								<select id="selectError3" name="product_category">
-									<option>Product Category</option>
+								<select id="selectError3" name="category_id">
+									<option>Select Category</option>
 									@foreach($categories as $category)
 										<option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
 									@endforeach
@@ -50,8 +50,8 @@
 						<div class="control-group">
 							<label class="control-label" for="selectError">Manufacture Name</label>
 							<div class="controls">
-								<select id="selectError3" name="product_manufacture">
-									<option>Manufacture Name</option>
+								<select id="selectError3" name="manufacture_id">
+									<option>Select Manufacture</option>
 									@foreach($manufactures as $manufacture)
 										<option value="{{ $manufacture->manufacture_id }}" >{{ $manufacture->manufacture_name }}</option>
 									@endforeach
@@ -62,7 +62,7 @@
 						<div class="control-group hidden-phone">
 							<label class="control-label" for="textarea2">Product Short Description</label>
 							<div class="controls">
-								<textarea class="cleditor" name="product_short_description" id="textarea2" rows="0" required></textarea>
+								<textarea class="cleditor" name="product_short_description" id="textarea1" rows="0" required></textarea>
 							</div>
 						</div>
 
@@ -76,7 +76,7 @@
 						<div class="control-group">
 							<label class="control-label" for="appendedPrependedInput">Product Price</label>
 							<div class="controls">
-								<div class="input-prepend input-append">
+								<div class="input-prepend">
 									<span class="add-on">৳</span><input id="appendedPrependedInput" size="16" type="text" name="product_price" required>
 								</div>
 							</div>
@@ -85,14 +85,14 @@
 						<div class="control-group">
 							<label class="control-label" for="date01">Product Image</label>
 							<div class="controls">
-								<input type="file" name="product_image" required>
+								<input type="file" name="product_image" >
 							</div>
 						</div>
 
 						<div class="control-group">
 							<label class="control-label" for="date01">Product Size</label>
 							<div class="controls">
-								<input type="text" class="input-xlarge" name="product_size" required>
+								<input type="text" class="input-xlarge" name="product_size">
 							</div>
 						</div>
 
