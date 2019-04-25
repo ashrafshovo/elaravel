@@ -50,9 +50,9 @@ class ManufactureController extends Controller
         $data['publication_status'] = $request->publication_status;
     
     
-        echo "<pre>";
+        /*echo "<pre>";
         print_r($data);
-        echo "</pre>";
+        echo "</pre>";*/
     
 
         DB::table('tbl_manufacture')->insert($data);
