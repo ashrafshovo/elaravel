@@ -16,8 +16,16 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = DB::table('tbl_products')->get();
+        $products = DB::table('tbl_products')
+                ->join('tbl_categories', 'tbl_products.category_id', '=', 'tbl_categories.category_id')
+                ->join('tbl_manufacture', 'tbl_products.manufacture_id', '=', 'tbl_manufacture.manufacture_id')
+                ->get();
 
+    /*  
+        echo "<pre>";
+        print_r($products);
+        echo "</pre>";
+    */
         return view('admin.product.index', compact('products'));
     }
 
@@ -120,6 +128,11 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        $product = DB::table('tbl_products')
+                ->where('product_id', $id)
+                ->first();
+
+        return view('admin.product.edit', compact('product'));
     }
 
     /**
@@ -143,6 +156,18 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+
+        $product = DB::table('tbl_products')
+                ->where('product_id', $id)
+                ->first();
+        if (file_exists('uploads/product/'.$product->product_image)) {
+            unlink('uploads/product/'.$product->product_image);
+        }
+
+        DB::table('tbl_products')
+                ->where('product_id', $id)
+                ->delete();
+        return redirect(route('product.index'))->with('successMsg', 'Product deleted successfully.');
     }
 
     /**
