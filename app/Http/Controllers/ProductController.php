@@ -144,4 +144,33 @@ class ProductController extends Controller
     {
         //
     }
+
+    /**
+    * Change publication status on
+    *
+    *@param int $id
+    *@return \Illuminate\Http\Response
+    */
+    public function publish($id)
+    {
+        DB::table('tbl_products')
+                ->where('product_id', $id)
+                ->update(['publication_status' => 1]);
+        return redirect()->back()->with('successMsg', 'Product successfully published.');
+    }
+
+    /**
+    * Change publication status off
+    *
+    *@param int $id
+    *@return \Illuminate\Http\Response
+    */
+
+    public function unpublish($id)
+    {
+        DB::table('tbl_products')
+                ->where('product_id', $id)
+                ->update(['publication_status' => 0]);
+        return redirect()->back()->with('successMsg', 'Product successfully unpublished.');
+    }
 }
