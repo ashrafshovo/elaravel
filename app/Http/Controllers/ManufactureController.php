@@ -138,7 +138,7 @@ class ManufactureController extends Controller
         DB::table('tbl_manufacture')
                 ->where('manufacture_id', $id)
                 ->update(['publication_status' => 1]);
-        return redirect()->back()->with('successMsg', 'Manufacture successfully published.');;
+        return redirect()->back()->with('successMsg', 'Manufacture successfully published.');
     }
 
     /**
@@ -153,6 +153,6 @@ class ManufactureController extends Controller
         DB::table('tbl_manufacture')
                 ->where('manufacture_id', $id)
                 ->update(['publication_status' => 0]);
-        return redirect()->back()->with('successMsg', 'Manufacture successfully unpublished.');;
+        return redirect()->back()->with('successMsg', 'Manufacture successfully unpublished.');
     }
 }
