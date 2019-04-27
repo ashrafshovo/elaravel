@@ -49,7 +49,9 @@
 						<th>Product ID</th>
 						<th>Product Name</th>
 						<th>Product Image</th>
-						<th>Product Description</th>
+						<th>Product Price</th>
+						<th>Category Name</th>
+						<th>Manufacture Name</th>
 						<th>Status</th>
 						<th>Actions</th>
 					</tr>
@@ -59,8 +61,12 @@
 					<tr>
 						<td>{{ $key+1 }}</td>
 						<td>{{ $product->product_name }}</td>
-						<td><img class="img-responsive img-thumbnail" style="width: 100px;height: 100px;" alt="thumbnail" src="{{ asset('uploads/product/'.$product->product_image) }}"></td>
-						<td>{!! $product->product_short_description !!}</td>
+						<td>
+							<img class="img-responsive img-thumbnail" style="width: 100px;height: 100px;" alt="thumbnail" src="{{ asset('uploads/product/'.$product->product_image) }}">
+						</td>
+						<td>{{ $product->product_price }}</td>
+						<td>{{ $product->category_name }}</td>
+						<td>{{ $product->manufacture_name }}</td>
 						<td class="center">
 							@if($product->publication_status == true)
 								<span class="label label-success">Published</span>
