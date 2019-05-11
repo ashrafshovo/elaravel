@@ -19,6 +19,7 @@
     <link href="{{ asset('front/css/animate.css') }}" rel="stylesheet">
 	<link href="{{ asset('front/css/main.css') }}" rel="stylesheet">
 	<link href="{{ asset('front/css/responsive.css') }}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 	@stack('css')
 
@@ -443,6 +444,17 @@
     <script src="{{ asset('front/js/main.js') }}"></script>
 
     @stack('scripts')
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+    <script>
+        $('textarea').ckeditor();
+        // $('.textarea').ckeditor(); // if class is prefered.
+    </script>
+
+    {!! Toastr::message() !!}
 
 </body>
 </html>
