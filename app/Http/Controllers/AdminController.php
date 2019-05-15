@@ -20,6 +20,12 @@ class AdminController extends Controller
 
     public function dashboard(Request $request)
     {
+        $this->validate( $request, [
+            'admin_email' => 'required|string',
+            'admin_password' => 'required'
+        ]);
+
+
     	$admin_email = $request->admin_email;
     	$admin_password = md5($request->admin_password);
 
@@ -45,8 +51,5 @@ class AdminController extends Controller
     	//return view('pages.back.dashboard');
     }
 
-    public function show_dashboard()
-    {
-    	return view('pages.back.dashboard');
-    }
+    
 }
