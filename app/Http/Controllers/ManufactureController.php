@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Session;
 
 class ManufactureController extends Controller
 {
@@ -15,6 +16,7 @@ class ManufactureController extends Controller
     public function index()
     {
         //
+        $this->AdminAuthCheck();
         $manufactures = DB::table('tbl_manufacture')->get();
         return view('admin.manufacture.index', compact('manufactures'));
     }
@@ -27,6 +29,7 @@ class ManufactureController extends Controller
     public function create()
     {
         //
+        $this->AdminAuthCheck();
         return view('admin.manufacture.create');
     }
 
@@ -80,6 +83,7 @@ class ManufactureController extends Controller
     public function edit($id)
     {
         //
+        $this->AdminAuthCheck();
         $manufacture = DB::table('tbl_manufacture')
                 ->where('manufacture_id', $id)
                 ->first();
@@ -155,4 +159,15 @@ class ManufactureController extends Controller
                 ->update(['publication_status' => 0]);
         return redirect()->back()->with('successMsg', 'Manufacture successfully unpublished.');
     }
+
+    public function AdminAuthCheck()
+    {
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) {
+            return;
+        } else{
+            return redirect(route('login'))->send();
+        }
+    }
+
 }
