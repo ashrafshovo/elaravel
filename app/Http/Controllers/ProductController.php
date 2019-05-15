@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Session;
 use Carbon\Carbon;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -17,6 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         //
+        $this->AdminAuthCheck();
         $products = DB::table('tbl_products')
                 ->join('tbl_categories', 'tbl_products.category_id', '=', 'tbl_categories.category_id')
                 ->join('tbl_manufacture', 'tbl_products.manufacture_id', '=', 'tbl_manufacture.manufacture_id')
@@ -39,7 +41,7 @@ class ProductController extends Controller
     public function create()
     {
         //
-
+        $this->AdminAuthCheck();
         $categories = DB::table('tbl_categories')
                     ->get();
         $manufactures  = DB::table('tbl_manufacture')
@@ -131,6 +133,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        $this->AdminAuthCheck();
         $product = DB::table('tbl_products')
                 ->join('tbl_categories', 'tbl_products.category_id', '=', 'tbl_categories.category_id')
                 ->join('tbl_manufacture', 'tbl_products.manufacture_id', '=', 'tbl_manufacture.manufacture_id')
@@ -274,4 +277,15 @@ class ProductController extends Controller
                 ->update(['publication_status' => 0]);
         return redirect()->back()->with('successMsg', 'Product successfully unpublished.');
     }
+
+    public function AdminAuthCheck()
+    {
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) {
+            return;
+        } else{
+            return redirect(route('login'))->send();
+        }
+    }
+
 }
