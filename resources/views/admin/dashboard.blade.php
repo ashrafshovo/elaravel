@@ -25,6 +25,8 @@
 	<link id="base-style" href="{{ asset('back/css/style.css') }}" rel="stylesheet">
 	<link id="base-style-responsive" href="{{ asset('back/css/style-responsive.css') }}" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 	<!-- end: CSS -->
 	
 
@@ -487,8 +489,17 @@
 
 	<script src="{{ asset('back/js/custom.js') }}"></script>
 
+	<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+    <script>
+        //$('textarea').ckeditor();
+        $('.textarea').ckeditor(); // if class is prefered.
+    </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	
 	<!-- end: JavaScript-->
+
+	{!! Toastr::message() !!}
 	
 </body>
 
