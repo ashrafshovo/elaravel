@@ -72,6 +72,16 @@
 							Session::put('message', null);
 						?>
 
+							@if ($errors->any())
+							    @foreach ($errors->all() as $error)
+        							<div class="alert alert-error">
+            							<button type="button" aria-hidden="true" class="close"
+            								onclick="this.parentElement.style.display='none'">×</button>
+            							<strong>{{ $error }}</strong>
+        							</div>
+    							@endforeach
+							@endif
+
 					<h2>Login to your account</h2>					
 
 					<form class="form-horizontal" action="{{ route('admin_dashboard') }}" method="post">
