@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Session;
 use App\Category;
 
 class CategoryController extends Controller
@@ -16,6 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $this->AdminAuthCheck();
         $categories = DB::table('tbl_categories')->get();
         return view('admin.category.index', compact('categories'));
     }
@@ -28,6 +30,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        $this->AdminAuthCheck();
         return view('admin.category.create');
     }
 
@@ -80,6 +83,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        //
+        $this->AdminAuthCheck();
         $category = DB::table('tbl_categories')
     			->where('category_id', $id)
     			->first();
@@ -155,5 +160,15 @@ class CategoryController extends Controller
     			->where('category_id', $id)
     			->update(['publication_status' => 0]);
     	return redirect()->back()->with('successMsg', 'Category successfully unpublished.');;
+    }
+
+    public function AdminAuthCheck()
+    {
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) {
+            return;
+        } else{
+            return redirect(route('login'))->send();
+        }
     }
 }
