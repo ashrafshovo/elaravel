@@ -39,8 +39,8 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('/logout', 'SuperAdminController@logout')->name('logout');
 Route::get('/admin', 'AdminController@index')->name('login');
-Route::get('/dashboard', 'AdminController@show_dashboard')->name('dashboard');
 Route::post('/admin-dashboard', 'AdminController@dashboard')->name('admin_dashboard');
+Route::get('/dashboard', 'SuperAdminController@index')->name('dashboard');
 
 // Category route
 Route::resource('category', 'CategoryController');
