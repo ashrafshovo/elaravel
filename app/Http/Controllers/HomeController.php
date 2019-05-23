@@ -22,6 +22,7 @@ class HomeController extends Controller
                           ->join('tbl_manufacture', 'tbl_products.manufacture_id', '=', 'tbl_manufacture.manufacture_id')
                           ->select('tbl_products.*', 'tbl_categories.category_name', 'tbl_manufacture.manufacture_name')
                           ->where('tbl_products.publication_status', 1)
+                          ->orderBy('product_id', 'desc')
                           ->limit(9)
                           ->get();
     	return view('pages.front.home', compact('categories', 'manufactures', 'featured_products'));
