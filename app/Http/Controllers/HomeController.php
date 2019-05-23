@@ -17,7 +17,14 @@ class HomeController extends Controller
     	$manufactures = DB::table('tbl_manufacture')
     				->where('publication_status', 1)
     				->get();
-    	return view('pages.front.home', compact('categories', 'manufactures'));
+        $featured_products = DB::table('tbl_products')
+                          ->join('tbl_categories', 'tbl_products.category_id', '=', 'tbl_categories.category_id')
+                          ->join('tbl_manufacture', 'tbl_products.manufacture_id', '=', 'tbl_manufacture.manufacture_id')
+                          ->select('tbl_products.*', 'tbl_categories.category_name', 'tbl_manufacture.manufacture_name')
+                          ->where('tbl_products.publication_status', 1)
+                          ->limit(9)
+                          ->get();
+    	return view('pages.front.home', compact('categories', 'manufactures', 'featured_products'));
     }
     
 }

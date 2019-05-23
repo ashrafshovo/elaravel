@@ -73,22 +73,22 @@
 						<div class="btn-group pull-right">
 							<div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
+									Bangladesh
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
+									<li><a href="#">India</a></li>
 									<li><a href="#">UK</a></li>
 								</ul>
 							</div>
 							
 							<div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
+									Taka
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
+									<li><a href="#">Indian Rupee</a></li>
 									<li><a href="#">Pound</a></li>
 								</ul>
 							</div>

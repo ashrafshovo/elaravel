@@ -49,7 +49,7 @@
 						<th>Product ID</th>
 						<th>Product Name</th>
 						<th>Product Image</th>
-						<th>Product Price</th>
+						<th>Product Price (৳)</th>
 						<th>Category Name</th>
 						<th>Manufacture Name</th>
 						<th>Status</th>
