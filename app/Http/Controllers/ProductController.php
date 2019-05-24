@@ -66,7 +66,7 @@ class ProductController extends Controller
             'manufacture_id' => 'required',
             'product_short_description' => 'required',
             'product_long_description' => 'required',
-            'product_price' => 'required',
+            'product_price' => 'required|image',
             'product_color' => 'required'
         ]);
 
@@ -246,7 +246,7 @@ class ProductController extends Controller
 
         Toastr::success('Product successfully deleted.', 'Success', ["positionClass" => "toast-top-right"]);
         
-        return redirect(route('product.index'))->with('successMsg', 'Product deleted successfully.');
+        return redirect(route('product.index'))/*->with('successMsg', 'Product deleted successfully.')*/;
     }
 
     /**
