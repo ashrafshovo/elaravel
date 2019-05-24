@@ -11,6 +11,9 @@ class HomeController extends Controller
 
     public function index()
     {
+        $sliders = DB::table('tbl_slider')
+                 ->where('publication_status', 1)
+                 ->get();
     	$categories = DB::table('tbl_categories')
     				->where('publication_status', 1)
     				->get();
@@ -25,7 +28,7 @@ class HomeController extends Controller
                           ->orderBy('product_id', 'desc')
                           ->limit(9)
                           ->get();
-    	return view('pages.front.home', compact('categories', 'manufactures', 'featured_products'));
+    	return view('pages.front.home', compact('sliders', 'categories', 'manufactures', 'featured_products'));
     }
     
 }
