@@ -160,50 +160,26 @@
 				<div class="col-sm-12">
 					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
-							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#slider-carousel" data-slide-to="1"></li>
-							<li data-target="#slider-carousel" data-slide-to="2"></li>
+							@foreach($sliders as $key=>$slider)
+							<li data-target="#slider-carousel" data-slide-to="{{ $key }}" class="{{  ($key == 0)? 'active': '' }}"></li>
+							@endforeach
 						</ol>
 						
 						<div class="carousel-inner">
-							<div class="item active">
+							@foreach($sliders as $key=>$slider)
+							<div class="item {{ ($key+1 == 1)? 'active': '' }}">
 								<div class="col-sm-6">
 									<h1><span>E</span>-SHOPPER</h1>
-									<h2>Free E-Commerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<h2>{{ $slider->slider_title }}</h2>
+									<p>{!! $slider->slider_description !!}</p>
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{ asset('front/images/home/girl1.jpg') }}" class="girl img-responsive" alt="" />
-									<img src="{{ asset('front/images/home/pricing.png') }}"  class="pricing" alt="" />
+									<img src="{{ asset('uploads/slider/'.$slider->slider_image) }}" class="girl img-responsive" alt="" />
+									<img src="{{ asset('uploads/slider/pricing.png') }}"  class="pricing" alt="" />
 								</div>
 							</div>
-							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>100% Responsive Design</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{ asset('front/images/home/girl2.jpg') }}" class="girl img-responsive" alt="" />
-									<img src="{{ asset('front/images/home/pricing.png') }}"  class="pricing" alt="" />
-								</div>
-							</div>
-							
-							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>Free Ecommerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{ asset('front/images/home/girl3.jpg') }}" class="girl img-responsive" alt="" />
-									<img src="{{ asset('front/images/home/pricing.png') }}" class="pricing" alt="" />
-								</div>
-							</div>
-							
+							@endforeach
 						</div>
 						
 						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
