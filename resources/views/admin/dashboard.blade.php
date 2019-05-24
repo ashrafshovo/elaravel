@@ -352,7 +352,7 @@
 
 						<li class="{{ Request::is('/manufacture*')? 'active': '' }}"><a href="{{ route('manufacture.index') }}"><i class="icon-tasks"></i><span class="hidden-tablet"> Manufactures</span></a></li>
 
-						<li><a href="ui.html"><i class="icon-picture"></i><span class="hidden-tablet"> Sliders</span></a></li>
+						<li class="{{ Request::is('/slider*')? 'active': '' }}"><a href="{{ route('slider.index') }}"><i class="icon-picture"></i><span class="hidden-tablet"> Sliders</span></a></li>
 
 						<li>
 							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Products </span><span class="label label-important"> New </span></a>
