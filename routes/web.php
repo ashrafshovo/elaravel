@@ -42,6 +42,11 @@ Route::get('/admin', 'AdminController@index')->name('login');
 Route::post('/admin-dashboard', 'AdminController@dashboard')->name('admin_dashboard');
 Route::get('/dashboard', 'SuperAdminController@index')->name('dashboard');
 
+// Slider Route
+Route::resource('slider', 'SliderController');
+Route::get('slider/publish/{id}', 'SliderController@publish')->name('slider.publish');
+Route::get('slider/unpublish/{id}', 'SliderController@unpublish')->name('slider.unpublish');
+
 // Category route
 Route::resource('category', 'CategoryController');
 Route::get('category/publish/{id}', 'CategoryController@publish')->name('category.publish');
