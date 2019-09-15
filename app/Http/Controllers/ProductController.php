@@ -66,7 +66,8 @@ class ProductController extends Controller
             'manufacture_id' => 'required',
             'product_short_description' => 'required',
             'product_long_description' => 'required',
-            'product_price' => 'required|image',
+            'product_image' => 'required|image',
+            'product_price' => 'required',
             'product_color' => 'required'
         ]);
 

@@ -26,8 +26,8 @@ Route::get('/', function () {
 
 Route::get('/', 'HomeController@index')->name('index');
 
-Route::get('category/{id}', 'HomeController@category_product')->name('category.product');
-Route::get('manufacture/{id}', 'HomeController@manufacture_product')->name('manufacture.product');
+Route::get('category-view/{id}', 'HomeController@category_product')->name('category.product');
+Route::get('manufacture-view/{id}', 'HomeController@manufacture_product')->name('manufacture.product');
 Route::get('product/view/{id}', 'HomeController@view_product')->name('view.product');
 
 
