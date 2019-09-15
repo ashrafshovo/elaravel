@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Route::get('/', 'HomeController@index')->name('index');
 
-
+Route::get('category/{id}', 'HomeController@category_product')->name('category.product');
 
 
 

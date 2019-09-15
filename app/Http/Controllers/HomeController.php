@@ -30,5 +30,32 @@ class HomeController extends Controller
                           ->get();
     	return view('pages.front.home', compact('sliders', 'categories', 'manufactures', 'featured_products'));
     }
+
+    public function category_product($id)
+    {
+        $sliders = null;
+        $categories = DB::table('tbl_categories')
+                    ->where('publication_status', 1)
+                    ->get();
+        $manufactures = DB::table('tbl_manufacture')
+                    ->where('publication_status', 1)
+                    ->get();
+        $category = DB::table('tbl_categories')
+                ->where('category_id', $id)
+                ->where('publication_status', 1)
+                ->first();
+        $products = DB::table('tbl_products')
+                          ->join('tbl_categories', 'tbl_products.category_id', '=', 'tbl_categories.category_id')
+                          ->join('tbl_manufacture', 'tbl_products.manufacture_id', '=', 'tbl_manufacture.manufacture_id')
+                          ->select('tbl_products.*', 'tbl_categories.category_name', 'tbl_manufacture.manufacture_name')
+                          ->where('tbl_products.publication_status', 1)
+                          ->where('tbl_categories.category_id', $id)
+                          ->orderBy('product_id', 'desc')
+                          ->limit(18)
+                          ->get();
+        //dd($category);
+
+        return view('pages.front.category', compact('sliders', 'categories', 'manufactures','category', 'products'));
+    }
     
 }
