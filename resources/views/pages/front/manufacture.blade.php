@@ -1,6 +1,6 @@
 @extends('layouts.index')
 
-@section('title', 'Home || E-Shopper')
+@section('title', 'Products By Manufacture || E-Shopper')
 
 @push('css')
 
@@ -10,8 +10,9 @@
 
 <div class="col-sm-9 padding-right">
 	<div class="features_items"><!--features_items-->
-		<h2 class="title text-center">Features Items</h2>
-		@foreach($featured_products as $product)
+		<h2 class="title text-center">{{ $manufacture->manufacture_name }}</h2>
+		@if($products->count()>0)
+		@foreach($products as $product)
 		<div class="col-sm-4">
 			<div class="product-image-wrapper">
 				<div class="single-products">
@@ -31,7 +32,7 @@
 				</div>
 				<div class="choose">
 					<ul class="nav nav-pills nav-justified">
-						<li><a href="#"><i class="fa fa-plus-square"></i>{{ $product->manufacture_name }}</a></li>
+						<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
 						<li><a href="#"><i class="fa fa-eye"></i>View Product</a></li>
 					</ul>
 				</div>
@@ -39,7 +40,9 @@
 		</div>
 
 		@endforeach
-
+		@else
+			<h2 class="text-center" style="margin-bottom: 30px;">No Data Found</h2>
+		@endif
 	</div><!--features_items-->
 
 	<div class="category-tab"><!--category-tab-->
